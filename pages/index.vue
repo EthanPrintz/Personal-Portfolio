@@ -1,73 +1,67 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        ethanprintz-portfolio
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+    <!-- Header -->
+    <header>
+      <div id="bio-container">
+        <h1 id="header-name">Ethan Printz</h1>
+        <h3 id="header-major">Junior at NYU IMA/ITP</h3>
+        <h3 id="header-role">Interaction Design and Computer Science</h3>
       </div>
-    </div>
+    </header>
+    <!-- Content -->
+    <main>
+      <div id="project-container" class="content-container">
+        <ul>
+          <li v-for="(post, index) in projects" :key="index">
+            <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <div id="experiment-container" class="content-container"></div>
+      <div id="post-container" class="content-container"></div>
+    </main>
   </div>
 </template>
 
 <script>
-export default {}
+import { getSomePostsWithTag } from "../api/posts";
+
+export default {
+  async asyncData() {
+    const projects = await getSomePostsWithTag("projects", 5);
+    const experiments = await getSomePostsWithTag("experiments", 8);
+    const posts = await getSomePostsWithTag("posts", 8);
+    return { projects };
+  }
+};
 </script>
 
-<style>
+<style lang="scss">
 .container {
-  margin: 0 auto;
+  background-color: $primary-background;
+  color: $primary-text;
+  width: 100vw;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  font-family: $sans-font;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+/* Header Styling */
+header {
+  width: 100vw;
+  height: 40vmin;
+  /* Biographical Info - Name, Major, Role */
+  #bio-container {
+    #header-name {
+      font-weight: 700;
+    }
+    #header-major,
+    #header-role {
+      font-weight: 500;
+      color: $secondary-text;
+      font-size: 1.2rem;
+    }
+  }
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+/* Content Styling */
 </style>

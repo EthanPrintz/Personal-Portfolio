@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <h1>{{ post.title }}</h1>
     <div v-html="post.html" />
   </div>
@@ -15,3 +15,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+#container {
+  background-color: $primary-background;
+  color: $primary-text;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: $sans-font;
+}
+</style>

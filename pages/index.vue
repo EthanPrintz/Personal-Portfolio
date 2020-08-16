@@ -60,7 +60,7 @@ export default {
   color: $primary-text;
   width: 100vw;
   min-height: 100vh;
-  font-family: $sans-font;
+  font-family: $sans;
 }
 
 /* Header Styling */
@@ -106,7 +106,7 @@ main {
   align-items: center;
   .title {
     align-self: flex-start;
-    margin: 2.8vmin 0 0 8vmax;
+    margin: 2.8vmin 0 0 5vmax;
     font-size: 1.8rem;
     font-weight: 700;
   }
@@ -139,7 +139,7 @@ main {
         }
         .project-description {
           color: $secondary-text;
-          font-family: $sans-font;
+          font-family: $sans;
           font-weight: 400;
           margin-top: 0.5vmin;
         }

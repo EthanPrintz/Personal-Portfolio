@@ -13,50 +13,62 @@
     <main>
       <div class="title" id="projects-title">Projects</div>
       <div id="project-container" class="content-container">
-        <nuxt-link :to="{ path: post.slug }" v-for="(post, index) in projects" :key="index">
+        <nuxt-link
+          :to="{ path: `/${post.classes[0].slug}/project/${post.slug}` }"
+          v-for="(post, index) in projects"
+          :key="index"
+        >
           <div class="project-card content-card">
             <img
-              :src="post.feature_image"
+              :src="$config.STRAPI_URL + post.cardImage.url"
               :alt="`Illustration of ${post.title}`"
               class="project-image"
             />
             <div class="project-title">{{ post.title }}</div>
-            <div class="project-description">{{ post.excerpt }}</div>
+            <div class="project-description">{{ post.classes.term }}</div>
           </div>
         </nuxt-link>
       </div>
       <div class="title" id="experiments-title">Experiments</div>
       <div id="experiment-container" class="content-container">
-        <div class="experiment-card content-card" v-for="(post, index) in experiments" :key="index">
-          <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
-        </div>
+        <nuxt-link
+          :to="{ path: `/${post.classes[0].slug}/experiment/${post.slug}` }"
+          v-for="(post, index) in experiments"
+          :key="index"
+        >
+          <div class="experiment-card content-card">
+            <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
+          </div>
+        </nuxt-link>
       </div>
       <div class="title" id="post-title">Posts</div>
-      <div id="post-container" class="content-container">
-        <div class="experiment-card content-card" v-for="(post, index) in posts" :key="index">
+      <!-- <div id="post-container" class="content-container">
+        <div
+          class="experiment-card content-card"
+          v-for="(post, index) in posts"
+          :key="index"
+        >
           <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
         </div>
-      </div>
+      </div>-->
     </main>
   </div>
 </template>
 
 <script>
-import { getSomePostsWithTag } from "../api/posts";
-
+import { getAllPostsOfType, getAllClasses } from "../api/posts";
 export default {
   async asyncData() {
-    const projects = await getSomePostsWithTag("projects", 5);
-    const experiments = await getSomePostsWithTag("experiments", 8);
-    const posts = await getSomePostsWithTag("posts", 8);
-    return { projects, experiments, posts };
+    const projects = await getAllPostsOfType("project");
+    const experiments = await getAllPostsOfType("experiment");
+    return { projects, experiments };
   }
 };
 </script>
 
 <style lang="scss">
 #container {
-  background-color: $primary-background;
+  background-color: #e7e7e7;
   color: $primary-text;
   width: 100vw;
   min-height: 100vh;
@@ -79,12 +91,14 @@ header {
     z-index: 2;
     #header-name {
       font-weight: 700;
+      font-family: $serif;
     }
     #header-major,
     #header-role {
-      font-weight: 500;
+      font-weight: 700;
       color: $secondary-text;
       font-size: 1.2rem;
+      font-family: $sans;
     }
   }
   #skyline {
@@ -107,8 +121,10 @@ main {
   .title {
     align-self: flex-start;
     margin: 2.8vmin 0 0 5vmax;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    font-family: $serif;
+    color: $secondary-text;
   }
   .content-container {
     width: 100vw;
@@ -124,23 +140,23 @@ main {
     &#project-container {
       min-height: 34vh;
       .content-card {
-        height: 34vh;
         width: 34vh;
         margin: 0 4vmin;
+        padding: 1vh 0;
         .project-image {
           width: 100%;
           border-radius: 0.4rem;
         }
         .project-title {
           color: $primary-text;
-          font-weight: 500;
+          font-weight: 700;
           margin-top: 1vh;
           font-size: 1.3rem;
         }
         .project-description {
           color: $secondary-text;
           font-family: $sans;
-          font-weight: 400;
+          font-weight: 700;
           margin-top: 0.5vmin;
         }
       }

@@ -1,65 +1,31 @@
-import GhostConentAPI from "@tryghost/content-api";
-
-const api = new GhostConentAPI({
-  url: process.env.CONTENT_URL,
-  key: process.env.CONTENT_KEY,
-  version: "v3"
-});
-
-// Get all posts
-export async function getAllPosts() {
-  return await api.posts
-    .browse({
-      limit: "all"
-    })
-    .catch(err => {
-      console.error(err);
-    });
+// Get all posts of certain type (blog, experiment, or project)
+// type: post type (project, experiment, blog)
+export async function getAllPostsOfType(type) {
+  return await fetch(`http://64.227.21.239/${type}s`).then(response =>
+    response.json()
+  );
 }
 
-// Get some posts
-export async function getSomePosts(numPosts) {
-  return await api.posts
-    .browse({
-      limit: numPosts
-    })
-    .catch(err => {
-      console.error(err);
-    });
+// Get single post with identifier
+// type: post type (project, experiment, blog)
+// id: unique post id (number)
+export async function getPostFromId(type, id) {
+  return await fetch(`http://64.227.21.239/projects/${id}`).then(response =>
+    response.json()
+  );
 }
 
-// Get all posts with specified tag
-export async function getAllPostsWithTag(tagName) {
-  return await api.posts
-    .browse({
-      filter: `tag:${tagName}`,
-      limit: "all"
-    })
-    .catch(err => {
-      console.error(err);
-    });
+export async function getPostFromSlug(type, slug) {
+  const posts = await getAllPostsOfType(type);
+  const id = posts.findIndex(post => post.slug === slug) + 1;
+  return await fetch(`http://64.227.21.239/${type}s/${id}`).then(response =>
+    response.json()
+  );
 }
 
-// Get some posts with specified tag
-export async function getSomePostsWithTag(tagName, numPosts) {
-  return await api.posts
-    .browse({
-      filter: `tag:${tagName}`,
-      limit: numPosts
-    })
-    .catch(err => {
-      console.error(err);
-    });
-}
-
-// Get all information from a single post
-export async function getSinglePost(postSlug) {
-  return await api.posts
-    .read({
-      slug: postSlug,
-      include: "tags"
-    })
-    .catch(err => {
-      console.error(err);
-    });
+// Get all classes
+export async function getAllClasses() {
+  return await fetch(`http://64.227.21.239/classes`).then(response =>
+    response.json()
+  );
 }

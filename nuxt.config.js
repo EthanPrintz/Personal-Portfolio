@@ -29,7 +29,7 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,500&display=swap"
+          "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       }
     ]
   },
@@ -54,13 +54,23 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["@nuxtJS/style-resources"],
+  modules: ["@nuxtJS/style-resources", "@nuxtjs/markdownit"],
+  markdownit: {
+    injected: true
+  },
   styleResources: {
     scss: ["~assets/scss/_colors.scss"]
+  },
+  strapi: {
+    url: process.env.STRAPI_URL,
+    entities: ["blogs"]
   },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {},
+  publicRuntimeConfig: {
+    STRAPI_URL: "http://64.227.21.239"
+  }
 };

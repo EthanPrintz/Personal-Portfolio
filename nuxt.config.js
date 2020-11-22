@@ -29,7 +29,7 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Serif:ital,wght@0,500;0,700;1,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
       }
     ]
   },
@@ -41,7 +41,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: [{ src: "~/plugins/prism", mode: "client" }],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -56,6 +56,10 @@ export default {
    */
   modules: ["@nuxtJS/style-resources", "@nuxtjs/markdownit"],
   markdownit: {
+    preset: "default",
+    linkify: true,
+    breaks: true,
+    use: ["markdown-it-prism"],
     injected: true
   },
   styleResources: {

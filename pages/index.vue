@@ -26,6 +26,7 @@
             />
             <div class="project-title">{{ post.title }}</div>
             <div class="project-description">{{ post.classes.term }}</div>
+            <div class="project-term">{{ terms.find(term => term.id === post.classes[0].term).name.toUpperCase()}}</div>
           </div>
         </nuxt-link>
       </div>
@@ -36,39 +37,44 @@
           v-for="(post, index) in experiments"
           :key="index"
         >
-          <div class="experiment-card content-card">
-            <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
+          <div
+            class="experiment-card content-card"
+            :style="`background-color: `"
+          >
+            <nuxt-link :to="{ path: `/${post.classes[0].slug}/experiment/${post.slug}` }">
+              <div class="experiment-emoji">{{ post.emoji }}</div>
+              <div class="experiment-title">{{ post.title }}</div>
+            </nuxt-link>
           </div>
         </nuxt-link>
       </div>
-      <div class="title" id="post-title">Posts</div>
-      <!-- <div id="post-container" class="content-container">
-        <div
-          class="experiment-card content-card"
-          v-for="(post, index) in posts"
-          :key="index"
-        >
-          <nuxt-link :to="{ path: post.slug }">{{ post.title }}</nuxt-link>
-        </div>
-      </div>-->
     </main>
   </div>
 </template>
 
 <script>
-import { getAllPostsOfType, getAllClasses } from "../api/posts";
+import { getAllPostsOfType, getAllClasses, getAllTerms } from "../api/posts";
 export default {
+  asyncComputed: {
+    
+  },
   async asyncData() {
+    const terms = await getAllTerms();
     const projects = await getAllPostsOfType("project");
+    projects.forEach(post => post.date = new Date(post.date));
+    projects.sort((a, b) => b.date - a.date);
     const experiments = await getAllPostsOfType("experiment");
-    return { projects, experiments };
+    experiments.forEach(post => post.date = new Date(post.date));
+    experiments.sort((a, b) => b.date - a.date);
+    const classes = await getAllClasses();
+    return { projects, experiments, classes, terms };
   }
 };
 </script>
 
 <style lang="scss">
 #container {
-  background-color: #e7e7e7;
+  background-color: #e0e0e0;
   color: $primary-text;
   width: 100vw;
   min-height: 100vh;
@@ -91,7 +97,7 @@ header {
     z-index: 2;
     #header-name {
       font-weight: 700;
-      font-family: $serif;
+      font-family: $sans;
     }
     #header-major,
     #header-role {
@@ -123,7 +129,7 @@ main {
     margin: 2.8vmin 0 0 5vmax;
     font-size: 1.6rem;
     font-weight: 700;
-    font-family: $serif;
+    font-family: $sans;
     color: $secondary-text;
   }
   .content-container {
@@ -138,10 +144,9 @@ main {
       text-decoration: none;
     }
     &#project-container {
-      min-height: 34vh;
       .content-card {
-        width: 34vh;
-        margin: 0 4vmin;
+        width: 30vh;
+        margin: 0 3vmin;
         padding: 1vh 0;
         .project-image {
           width: 100%;
@@ -152,12 +157,51 @@ main {
           font-weight: 700;
           margin-top: 1vh;
           font-size: 1.3rem;
+          line-height: 1.5rem;
         }
         .project-description {
           color: $secondary-text;
           font-family: $sans;
           font-weight: 700;
           margin-top: 0.5vmin;
+        }
+        .project-term {
+          color: $tertiary-text;
+          font-family: $sans;
+          font-weight: 500;
+          font-size: 0.9rem;
+          margin-top: 0.5vmin;
+        }
+      }
+    }
+    &#experiment-container {
+      justify-content: flex-start;
+      padding: 0 5vmax;
+
+      .content-card:nth-child(odd){
+        background-color: #f9f9f9;
+      }
+      .content-card {
+        width: 20vw;
+        font-weight: 700;
+        .experiment-emoji {
+          font-size: 1.8rem;
+          float: left;
+          text-align: center;
+          width: 10%;
+          padding:0.2rem;
+        }
+        .experiment-title {
+          color: $primary-text;
+          font-size: 1.2rem;
+          padding-left: 0.3rem;
+          float: right;
+          width: 90%;
+          min-height:  2.7rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
         }
       }
     }

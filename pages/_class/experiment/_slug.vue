@@ -29,6 +29,11 @@ export default {
     // Return information to dom
     console.log(post);
     return { post };
+  },
+  head(){
+    return {
+      title: `Ethan Printz | ${this.post.title}`
+    }
   }
 };
 </script>
@@ -124,6 +129,11 @@ export default {
   }
   code{
     font-family: $mono;
+  }
+  .embed-responsive{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }
 </style>

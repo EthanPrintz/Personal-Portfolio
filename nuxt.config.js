@@ -59,8 +59,15 @@ export default {
     preset: "default",
     linkify: true,
     breaks: true,
-    use: ["markdown-it-prism"],
-    injected: true
+    use: ["markdown-it-video"],
+    injected: true,
+    highlight: (code, lang) => {
+      const Prism = require("prismjs");
+      return Prism.highlight(
+        code,
+        Prism.languages[lang] || Prism.languages.markup
+      );
+    }
   },
   styleResources: {
     scss: ["~assets/scss/_colors.scss"]

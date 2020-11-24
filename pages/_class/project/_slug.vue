@@ -42,6 +42,11 @@ export default {
     const terms = await getAllTerms();
     // Return information to dom
     return { post, terms };
+  },
+  head(){
+    return {
+      title: `Ethan Printz | ${this.post.title}`
+    }
   }
 };
 </script>
@@ -176,5 +181,30 @@ export default {
   code{
     font-family: $mono;
   }
+  .toolbar{
+    .toolbar-item button{
+      background-color: transparent;
+      font-family: $sans;
+      color: #aaaaaa;
+      box-shadow: 0 0 0 0 transparent;
+      cursor: pointer;
+    }
+    .toolbar-item button:hover{
+      color: #cecece;
+    }
+    .toolbar-item span{
+      background-color: transparent;
+      box-shadow: 0 0 0 0 transparent;
+      font-family: $sans;
+      color: #aaaaaa;
+      font-weight: bold;
+    }
+  }
+  .embed-responsive{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
 }
 </style>

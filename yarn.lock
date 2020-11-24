@@ -5157,6 +5157,13 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it-html5-media@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-html5-media/-/markdown-it-html5-media-0.6.0.tgz#ed82bbdaec0545ba0879f0454c5a9d73171d3a76"
+  integrity sha512-3zxk00H5adz5n/LaC+yncTfZhSxa7igVKsKNfegUJw7gNAxMEA7D6YLHzSM+isJSnTLbiqU7663hfitv/ybzeg==
+  dependencies:
+    markdown-it "^8.4.0"
+
 markdown-it-prism@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/markdown-it-prism/-/markdown-it-prism-2.1.1.tgz#cb181313017ec8f588f1bdad06d3befb2992b946"
@@ -5164,7 +5171,12 @@ markdown-it-prism@^2.1.1:
   dependencies:
     prismjs "1.21.0"
 
-markdown-it@^8.3.1:
+markdown-it-video@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/markdown-it-video/-/markdown-it-video-0.6.3.tgz#ee96a8fce4a262872f8aaf9706c31540d40104c2"
+  integrity sha512-T4th1kwy0OcvyWSN4u3rqPGxvbDclpucnVSSaH3ZacbGsAts964dxokx9s/I3GYsrDCJs4ogtEeEeVP18DQj0Q==
+
+markdown-it@^8.3.1, markdown-it@^8.4.0:
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
   integrity sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==

@@ -41,10 +41,8 @@
             class="experiment-card content-card"
             :style="`background-color: `"
           >
-            <nuxt-link :to="{ path: `/${post.classes[0].slug}/experiment/${post.slug}` }">
-              <div class="experiment-emoji">{{ post.emoji }}</div>
-              <div class="experiment-title">{{ post.title }}</div>
-            </nuxt-link>
+            <div class="experiment-emoji">{{ post.emoji }}</div>
+            <div class="experiment-title">{{ post.title }}</div>
           </div>
         </nuxt-link>
       </div>
@@ -127,10 +125,10 @@ main {
   .title {
     align-self: flex-start;
     margin: 2.8vmin 0 0 5vmax;
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     font-weight: 700;
     font-family: $sans;
-    color: $secondary-text;
+    color: $primary-text;
   }
   .content-container {
     width: 100vw;
@@ -138,7 +136,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     a {
       text-decoration: none;
@@ -146,7 +144,7 @@ main {
     &#project-container {
       .content-card {
         width: 30vh;
-        margin: 0 3vmin;
+        margin: 0 3vmin 3vmin;
         padding: 1vh 0;
         .project-image {
           width: 100%;
@@ -177,31 +175,25 @@ main {
     &#experiment-container {
       justify-content: flex-start;
       padding: 0 5vmax;
-
-      .content-card:nth-child(odd){
-        background-color: #f9f9f9;
-      }
       .content-card {
-        width: 20vw;
         font-weight: 700;
+        margin: 0 0.5rem 3.2rem;
         .experiment-emoji {
           font-size: 1.8rem;
           float: left;
-          text-align: center;
-          width: 10%;
-          padding:0.2rem;
+          background-color: white;
+          border-top-left-radius: 0.6rem;
+          border-bottom-left-radius: 0.6rem;
+          padding: 0 0.6rem;
         }
         .experiment-title {
           color: $primary-text;
+          float: left;
           font-size: 1.2rem;
-          padding-left: 0.3rem;
-          float: right;
-          width: 90%;
-          min-height:  2.7rem;
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          align-items: center;
+          padding: 0.44rem 0.5rem 0.44rem 0;
+          background-color: white;
+          border-top-right-radius: 0.6rem;
+          border-bottom-right-radius: 0.6rem;
         }
       }
     }

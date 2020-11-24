@@ -16,10 +16,10 @@
     "markdown-it-prism": "^2.1.1",
     "markdown-it-video": "^0.6.3",
     "nuxt": "^2.14.0",
-    "prismjs": "^1.22.0"
+    "prismjs": "^1.22.0",
+    "@nuxtjs/style-resources": "^1.0.0"
   },
   "devDependencies": {
-    "@nuxtjs/style-resources": "^1.0.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^9.0.3"
   }

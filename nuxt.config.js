@@ -54,7 +54,10 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["@nuxtjs/style-resources", "@nuxtjs/markdownit"],
+  modules: [
+    "@nuxtjs/style-resources",
+    "@nuxtjs/markdownit" /*, "@nuxt/image"*/
+  ],
   markdownit: {
     preset: "default",
     linkify: true,
@@ -76,12 +79,15 @@ export default {
     url: process.env.STRAPI_URL,
     entities: ["blogs"]
   },
+  // image: {
+  //   // Options
+  // },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
   publicRuntimeConfig: {
-    STRAPI_URL: "http://64.227.21.239"
+    STRAPI_URL: "https://ethanprintz.dev/"
   }
 };

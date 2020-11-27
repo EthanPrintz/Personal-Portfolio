@@ -4,7 +4,7 @@
       id="header-color"
       v-bind:style="{
         'background-image':
-          'url( http://64.227.21.239' + post.heroImage.url + ')'
+          'url( https://ethanprintz.dev' + post.heroImage.url + ')'
       }"
     ></div>
     <header>

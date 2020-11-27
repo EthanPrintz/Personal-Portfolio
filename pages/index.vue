@@ -14,7 +14,7 @@
       <div class="title" id="projects-title">Projects</div>
       <div id="project-container" class="content-container">
         <nuxt-link
-          :to="{ path: `/${post.classes[0].slug}/project/${post.slug}` }"
+          :to="{ path: `${post.classes[0].slug}/project/${post.slug}` }"
           v-for="(post, index) in projects"
           :key="index"
         >

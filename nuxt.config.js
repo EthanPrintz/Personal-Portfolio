@@ -88,6 +88,6 @@ export default {
    */
   build: {},
   publicRuntimeConfig: {
-    STRAPI_URL: "https://ethanprintz.dev/"
+    STRAPI_URL: "https://ethanprintz.dev"
   }
 };

@@ -134,7 +134,7 @@ export default {
           }
           #post-overview{
             padding: 0.4rem 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: italic;
           }
         }

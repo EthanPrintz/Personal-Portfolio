@@ -164,10 +164,17 @@ header {
       text-decoration: none;
     }
     &#project-container {
+      /* Mobile */
+      @media only screen and (max-aspect-ratio: 4/5){  
+        padding-top: 4vh;
+      }
       .content-card {
         width: 30vh;
         margin: 0 3vmin 3vmin;
         padding: 1vh 0;
+        @media only screen and (max-aspect-ratio: 4/5){  
+          width: 70vw;
+        }
         /* Mobile */
         @media only screen and (max-aspect-ratio: 0.67){  
           /* width: 30vh;

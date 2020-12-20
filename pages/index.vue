@@ -8,6 +8,11 @@
         <h3 id="header-role">UI/UX and Computer Science</h3>
       </div>
       <img :src="require(`@/assets/img/nyc-skyline.png`)" alt id="skyline" />
+      <nuxt-link to="/contact">
+        <div id="contact">
+          About + Contact
+        </div>
+      </nuxt-link>
     </header>
     <!-- Content -->
     <main>
@@ -66,6 +71,11 @@ export default {
     experiments.sort((a, b) => b.date - a.date);
     const classes = await getAllClasses();
     return { projects, experiments, classes, terms };
+  },
+  head(){
+    return {
+      title: `Ethan Printz | Portfolio`
+    }
   }
 };
 </script>
@@ -111,6 +121,18 @@ header {
     bottom: 0;
     right: 0;
     width: 130vmin;
+  }
+  #contact{
+    position: absolute;
+    z-index: 1;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: grey!important;
+  }
+  #contact:hover{
+    border-bottom: 2px solid grey;
   }
 }
 

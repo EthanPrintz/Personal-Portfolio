@@ -7,10 +7,10 @@
           'url( https://ethanprintz.dev' + post.heroImage.url + ')'
       }"
     ></div>
-    <header>
+    <header id="experimentHeader">
       <nuxt-link to="/" id="name">Ethan Printz</nuxt-link>
     </header>
-    <main>
+    <main id="experimentMain">
       <div id="post-header">
         <h1 id="post-header">{{ post.title }}</h1>
       </div>
@@ -80,60 +80,112 @@ export default {
       }
     }
   }
-  main {
+  #experimentMain {
     position: relative;
     z-index: 2;
     color: $primary-text;
-    width: 80vw;
-    margin: -14vmin 10vw 0 10vw;
-    padding: 6vmin;
     border-radius: 0.5rem;
-    #post-header {
-      text-align: center;
-      font-weight: 700;
-      font-size: 2.3rem;
-      font-family: $sans;
+    background-color: $secondary-background;
+    min-height: 60vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Mobile */
+    @media only screen and (max-aspect-ratio: 4/5){  
+      width: 92vw;
+      margin: -10vmin 2vw 0 2vw;
+      padding: 2vmin;
+      #post-header {
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        font-family: $sans;
+      }
+    }
+    /* Tablet + Desktop */
+    @media only screen and (min-aspect-ratio: 4/5){
+      width: 80vw;
+      margin: -14vmin 10vw 0 10vw;
+      padding: 6vmin;
+      #post-header {
+        text-align: center;
+        font-weight: 700;
+        font-size: 2.3rem;
+        font-family: $sans;
+      }
     }
   }
 }
 </style>
 
 <style lang="scss">
-#post-content {
-  width: 100vw;
-  padding: 4vh 32vmin;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  font-family: $sans;
-  h2 {
-    font-weight: 700;
-    padding: 1.5rem 0 0 0;
+#experimentMain {
+  #post-content {
+    width: 100vw;
+    line-height: 1.8rem;
     font-family: $sans;
-  }
-  p{
-    margin: 1.5rem 0;
-  }
-  img {
-    width: 80%;
-    margin: 0.7em 10%;
-    border-radius: 0.5rem;
-  }
-  pre{
-    width: 100%;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: #2c2c2c;
-    color:rgb(235, 235, 235);
-    margin: 2rem 0;
-    text-overflow: scroll;
-  }
-  code{
-    font-family: $mono;
-  }
-  .embed-responsive{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    /* Mobile */
+    @media only screen and (max-aspect-ratio: 4/5){  
+      padding: 3vh 10vmin;
+      font-size: 1.1rem;
+      h2{
+        text-align: center;
+      }
+    }
+    /* Mid */
+    @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
+      padding: 2vh 20vmin;
+      font-size: 1.15rem;
+    }
+    /* Desktop */
+    @media only screen and (min-aspect-ratio: 3/2){
+      padding: 2vh 32vmin;
+      font-size: 1.2rem;
+    }
+    h2 {
+      font-weight: 700;
+      padding: 1.5rem 0 0 0;
+      font-family: $sans;
+    }
+    p{
+      @media only screen and (max-aspect-ratio: 4/5){  
+      margin: 1rem 0;
+      }
+      /* Tablet + Desktop */
+      @media only screen and (min-aspect-ratio: 4/5){
+      margin: 1.5rem 0;
+      }
+    }
+    img {
+      border-radius: 0.5rem;
+      @media only screen and (max-aspect-ratio: 4/5){  
+        margin: 1em 0;
+        width: 100%;
+      }
+      /* Tablet + Desktop */
+      @media only screen and (min-aspect-ratio: 4/5){
+        margin: 0.7em 9%;
+        width: 82%;
+      }
+    }
+    pre{
+      width: 100%;
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: #2c2c2c;
+      color:rgb(235, 235, 235);
+      margin: 2rem 0;
+      text-overflow: scroll;
+    }
+    code{
+      font-family: $mono;
+    }
+    .embed-responsive{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
   }
 }
 </style>

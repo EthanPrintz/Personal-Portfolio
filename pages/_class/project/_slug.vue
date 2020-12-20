@@ -10,7 +10,7 @@
     <header>
       <nuxt-link to="/" id="name">Ethan Printz</nuxt-link>
     </header>
-    <main>
+    <main id="projectMain">
       <div id="post-header">
         <div id="post-header-left">
           <div id="post-title">{{ post.title }}</div>
@@ -93,34 +93,94 @@ export default {
       }
     }
   }
-  main {
+  #projectMain {
     position: relative;
     z-index: 2;
     color: $primary-text;
-    width: 80vw;
-    margin: -14vmin 10vw 0 10vw;
-    padding: 6vmin;
     border-radius: 0.5rem;
+    background-color: $secondary-background;
+    min-height: 60vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Mobile */
+    @media only screen and (max-aspect-ratio: 4/5){  
+      width: 96vw;
+      margin: -10vmin 2vw 0 2vw;
+      padding: 2vmin;
+    }
+    /* Tablet + Desktop */
+    @media only screen and (min-aspect-ratio: 4/5){
+      width: 80vw;
+      margin: -14vmin 10vw 0 10vw;
+      padding: 6vmin;
+    }
+
     #post-header {
       font-family: $sans;
-      padding: 0 6vmin;
       border-bottom: 1px solid #dadada;
       padding-bottom: 1rem;
-      #post-header-left{
-        width: 70%;
-        float: left;
-
-        #post-title{
-          font-weight: 700;
-          font-size: 2.3rem;
+      /* Mobile */
+      @media only screen and (max-aspect-ratio: 4/5){  
+        padding: 0 2vmin;
+        text-align: center;
+        /* Post Header Left */
+        #post-header-left{
+        width: 100%;
+          #post-title{
+            font-weight: 700;
+            font-size: 2rem;
+          }
+          #post-overview{
+            padding: 0.4rem 1rem;
+            font-size: 1.1rem;
+            font-style: italic;
+          }
         }
-        #post-overview{
-          padding: 0.5rem 1rem 1.5rem 0;
-          font-size: 1.1rem;
-          font-style: italic;;
+        /* Post Header Right */
+        #post-header-right{
+        width: 100%;
+        padding: 0.4rem 1rem;
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+
+          #post-class, #post-term{
+            margin: 0.4vmin 0;
+          }
+          .label{
+            font-size: 0.85rem;
+            color: $secondary-text;
+          }
+          #class, #term{
+            font-size: 1rem;
+            font-weight: bold;
+          }
         }
       }
-      #post-header-right{
+
+      /* Tablet + Desktop */
+      @media only screen and (min-aspect-ratio: 4/5){
+        padding: 0 6vmin;
+        /* Post Header Left */
+        #post-header-left{
+        width: 70%;
+        float: left;
+          #post-title{
+            font-weight: 700;
+            font-size: 2.3rem;
+          }
+          #post-overview{
+            padding: 0.5rem 1rem 1.5rem 0;
+            font-size: 1.1rem;
+            font-style: italic;;
+          }
+        }
+        /* Post Header Right */
+        #post-header-right{
         width: 30%;
         float: right;
         padding-left: 2rem;
@@ -131,15 +191,16 @@ export default {
         justify-content: center;
         padding-top: 1vmin;
 
-        #post-class, #post-term{
-          margin: 0.8vmin 0;
-        }
-        .label{
-          font-size: 0.8rem;
-          color: $secondary-text;
-        }
-        #class, #term{
-          font-weight: bold;
+          #post-class, #post-term{
+            margin: 0.8vmin 0;
+          }
+          .label{
+            font-size: 0.8rem;
+            color: $secondary-text;
+          }
+          #class, #term{
+            font-weight: bold;
+          }
         }
       }
     }
@@ -150,11 +211,27 @@ export default {
 <style lang="scss">
 #post-content {
   width: 100vw;
-  padding: 2vh 32vmin;
-  font-size: 1.2rem;
   line-height: 1.8rem;
   font-family: $sans;
   font-weight: 400;
+  /* Mobile */
+  @media only screen and (max-aspect-ratio: 4/5){  
+    padding: 3vh 6vmin;
+    font-size: 1.1rem;
+    h2{
+      text-align: center;
+    }
+  }
+  /* Mid */
+  @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
+    padding: 2vh 20vmin;
+    font-size: 1.15rem;
+  }
+  /* Desktop */
+  @media only screen and (min-aspect-ratio: 3/2){
+    padding: 2vh 32vmin;
+    font-size: 1.2rem;
+  }
   h2 {
     font-weight: 700;
     padding: 1.5rem 0 0 0;
@@ -164,9 +241,16 @@ export default {
     margin: 1.5rem 0;
   }
   img {
-    width: 82%;
-    margin: 0.7em 9%;
     border-radius: 0.5rem;
+    @media only screen and (max-aspect-ratio: 4/5){  
+      margin: 1em 0;
+      width: 100%;
+    }
+    /* Tablet + Desktop */
+    @media only screen and (min-aspect-ratio: 4/5){
+      margin: 0.7em 9%;
+      width: 82%;
+    }
   }
   pre{
     width: 100%;
@@ -177,7 +261,13 @@ export default {
     margin: 2rem 0;
     text-overflow: scroll;
     overflow-x: scroll;
-    font-size: 1.1rem;
+    @media only screen and (max-aspect-ratio: 4/5){  
+      font-size: 0.84rem;
+    }
+    /* Tablet + Desktop */
+    @media only screen and (min-aspect-ratio: 4/5){
+      font-size: 1.1rem;
+    }
   }
   code{
     font-family: $mono;

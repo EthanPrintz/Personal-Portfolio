@@ -15,7 +15,7 @@
       </nuxt-link>
     </header>
     <!-- Content -->
-    <main>
+    <main id="indexMain">
       <!-- <div class="title" id="projects-title">Projects</div> -->
       <div id="project-container" class="content-container">
         <nuxt-link
@@ -137,7 +137,7 @@ header {
 }
 
 /* Content Styling */
-main {
+#indexMain {
   background-color: $secondary-background;
   min-height: 60vh;
   max-width: 100vw;
@@ -168,6 +168,15 @@ main {
         width: 30vh;
         margin: 0 3vmin 3vmin;
         padding: 1vh 0;
+        /* Mobile */
+        @media only screen and (max-aspect-ratio: 0.67){  
+          /* width: 30vh;
+          margin: 0 3vmin 3vmin;
+          padding: 1vh 0; */
+        }
+        /* Tablet + Desktop */
+        @media only screen and (min-aspect-ratio: 0.67){
+        }
         .project-image {
           width: 100%;
           border-radius: 0.4rem;

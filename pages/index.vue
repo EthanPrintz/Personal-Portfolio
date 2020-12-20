@@ -5,13 +5,13 @@
       <div id="bio-container">
         <h1 id="header-name">Ethan Printz</h1>
         <h3 id="header-major">Junior at NYU IMA/ITP</h3>
-        <h3 id="header-role">Interaction Design and Computer Science</h3>
+        <h3 id="header-role">UI/UX and Computer Science</h3>
       </div>
       <img :src="require(`@/assets/img/nyc-skyline.png`)" alt id="skyline" />
     </header>
     <!-- Content -->
     <main>
-      <div class="title" id="projects-title">Projects</div>
+      <!-- <div class="title" id="projects-title">Projects</div> -->
       <div id="project-container" class="content-container">
         <nuxt-link
           :to="{ path: `/${post.classes[0].slug}/project/${post.slug}` }"

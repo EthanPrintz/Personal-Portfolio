@@ -176,6 +176,7 @@ export default {
     color:rgb(235, 235, 235);
     margin: 2rem 0;
     text-overflow: scroll;
+    overflow-x: scroll;
     font-size: 1.1rem;
   }
   code{

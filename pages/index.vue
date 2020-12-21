@@ -23,7 +23,7 @@
           v-for="(post, index) in projects"
           :key="index"
         >
-          <div class="project-card content-card">
+          <div class="project-card content-card" v-if="post.visible == true">
             <img
               :src="$config.STRAPI_URL + post.cardImage.url"
               :alt="`Illustration of ${post.title}`"
@@ -45,6 +45,7 @@
           <div
             class="experiment-card content-card"
             :style="`background-color: `"
+             v-if="post.visible == true"
           >
             <div class="experiment-emoji">{{ post.emoji }}</div>
             <div class="experiment-title">{{ post.title }}</div>

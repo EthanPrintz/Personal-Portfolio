@@ -60,7 +60,20 @@ export default {
    */
   modules: [
     "@nuxtjs/style-resources",
-    "@nuxtjs/markdownit" /*, "@nuxt/image"*/
+    "@nuxtjs/markdownit",
+    [
+      "nuxt-image-extractor",
+      {
+        // (Required) CMS url
+        baseUrl: "https://ethanprintz.dev/",
+
+        // (Optional) Dir where downloaded images will be stored
+        path: "/_images",
+
+        // (Optional) Array containing image formats
+        extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg"]
+      }
+    ]
   ],
   markdownit: {
     preset: "default",

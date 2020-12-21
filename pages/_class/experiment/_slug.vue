@@ -27,7 +27,6 @@ export default {
     // Get post info as object
     const post = await getPostFromSlug("experiment", params.slug);
     // Return information to dom
-    console.log(post);
     return { post };
   },
   head(){

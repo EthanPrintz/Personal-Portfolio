@@ -5768,6 +5768,11 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+nuxt-image-extractor@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/nuxt-image-extractor/-/nuxt-image-extractor-1.1.4.tgz#f6fa4244fa703ba9dbb072eb0500c4cc20b849c2"
+  integrity sha512-Ondz+pX4IrRrkCuOLFYG3Ct6NfHv6eeE+76W5zmpcw8u32MCcdxk+RhErS86O6QmF8AT4AdC95ALjusN/B5UfA==
+
 nuxt@^2.14.0:
   version "2.14.12"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.14.12.tgz#836096ff62ba72554b73744d94f5547109e563f7"

@@ -19,6 +19,7 @@
     "markdown-it-video": "^0.6.3",
     "node-sass": "^5.0.0",
     "nuxt": "^2.14.0",
+    "nuxt-image-extractor": "^1.1.4",
     "prismjs": "^1.22.0",
     "sass-loader": "^10.1.0",
     "vue-responsive": "^1.1.0"

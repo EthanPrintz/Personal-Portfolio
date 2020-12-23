@@ -4,13 +4,14 @@
       id="header-color"
       v-bind:style="{
         'background-image':
-          'url( https://ethanprintz.dev' + post.heroImage.url + ')'
+        `linear-gradient(to bottom, transparent, #e6e6e6),
+          url( https://ethanprintz.dev${post.heroImage.url})`
       }"
     ></div>
-    <header id="experimentHeader">
+    <header id="experiment-header">
       <nuxt-link to="/" id="name">Ethan Printz</nuxt-link>
     </header>
-    <main id="experimentMain">
+    <main id="experiment-main">
       <div id="post-header">
         <h1 id="post-header">{{ post.title }}</h1>
       </div>
@@ -39,7 +40,7 @@ export default {
 
 <style scoped lang="scss">
 #container {
-  background-color: $primary-background;
+  background-color: #e6e6e6;
   color: $primary-text;
   width: 100vw;
   min-height: 100vh;
@@ -55,7 +56,15 @@ export default {
     background-size: cover;
     background-position: center center;
   }
-  header {
+  #experiment-header {
+    width: 100vw;
+    height: 43vmin;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    padding: 10vmin;
+    position: relative;
     #name {
       position: absolute;
       z-index: 3;
@@ -79,7 +88,7 @@ export default {
       }
     }
   }
-  #experimentMain {
+  #experiment-main {
     position: relative;
     z-index: 2;
     color: $primary-text;

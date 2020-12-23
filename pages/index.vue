@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <!-- Header -->
-    <header>
+    <header id="main-header">
       <div id="bio-container">
         <h1 id="header-name">Ethan Printz</h1>
         <h3 id="header-major">Junior at NYU IMA/ITP</h3>
@@ -91,7 +91,7 @@ export default {
 }
 
 /* Header Styling */
-header {
+#main-header {
   width: 100vw;
   height: 40vmin;
   display: flex;

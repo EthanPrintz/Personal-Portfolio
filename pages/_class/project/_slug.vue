@@ -28,7 +28,11 @@
         </div>
         <div class="overviewShort">
           <div class="overviewShortLabel">Term</div>
-          <div class="overviewShortText">{{terms[post.classes[0].term].name}}</div>
+          <div class="overviewShortText">{{terms.filter(t => t.id == post.classes[0].term)[0].name}}</div>
+        </div>
+        <div class="overviewShort" v-if="post.role">
+            <div class="overviewShortLabel">Role</div>
+            <div class="overviewShortText">{{post.role}}</div>
         </div>
         <div class="overviewShort" v-if="post.github">
           <div class="overviewShortLabel">Github</div>
@@ -137,7 +141,7 @@ export default {
     z-index: 2;
     color: $primary-text;
     border-radius: 0.5rem;
-    background-color: #f3f3f3;
+    background-color: #f7f7f7;
     min-height: 60vh;
     max-width: 100vw;
     display: flex;
@@ -147,13 +151,11 @@ export default {
     @media only screen and (max-aspect-ratio: 4/5){  
       width: 96vw;
       margin: -10vmin 2vw 0 2vw;
-      padding: 2vmin;
     }
     /* Tablet + Desktop */
     @media only screen and (min-aspect-ratio: 4/5){
       width: 80vw;
       margin: -14vmin 10vw 0 10vw;
-      padding: 6vmin;
     }
     #post-header{
       position: absolute;
@@ -199,20 +201,23 @@ export default {
     }
     #post-overview{
       text-align: left;
-      width: 100vw;
-      margin-bottom: -2.2rem;
+      width: 100%;
+      background-color: #eeeeee;
+      margin-bottom: -6rem;
       position: relative;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
       /* Mobile */
       @media only screen and (max-aspect-ratio: 4/5){  
-        padding: 0 8vmin;
+        padding: 2rem 5vmin;
       }
       /* Mid */
       @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
-        padding: 0 20vmin;
+        padding: 2rem 10vmin;
       }
       /* Desktop */
       @media only screen and (min-aspect-ratio: 3/2){
-        padding: 0 38vmin;
+        padding: 2rem 20vmin;
       }
       #post-overview-title{
         font-size: 1.8rem;
@@ -269,13 +274,13 @@ export default {
 
 <style lang="scss">
 #post-content {
-  width: 100vw;
+  width: 100%;
   line-height: 1.7rem;
   font-family: $sans;
   font-weight: 400;
   /* Mobile */
   @media only screen and (max-aspect-ratio: 4/5){  
-    padding: 3vh 8vmin;
+    padding: 3vh 5vmin;
     font-size: 1.22rem;
     h1,h2{
       text-align: center;
@@ -283,13 +288,23 @@ export default {
   }
   /* Mid */
   @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
-    padding: 2vh 20vmin;
+    padding: 2vh 10vmin;
     font-size: 1.17rem;
   }
   /* Desktop */
   @media only screen and (min-aspect-ratio: 3/2){
-    padding: 2vh 38vmin;
+    padding: 2vh 20vmin;
     font-size: 1.12rem;
+  }
+  a{
+    color: #6161b9;
+    text-decoration: none;
+    font-style: italic;
+    transition: 0.1s;
+  }
+  a:hover{
+    text-decoration: underline;
+    color: #5858a1;
   }
   h1{
     font-size: 1.25rem;
@@ -312,13 +327,13 @@ export default {
   img {
     border-radius: 0.5rem;
     @media only screen and (max-aspect-ratio: 4/5){  
-      margin: 1em 0;
+      margin: 1rem 0;
       width: 100%;
     }
     /* Tablet + Desktop */
     @media only screen and (min-aspect-ratio: 4/5){
-      margin: 0.7em 9%;
-      width: 82%;
+      margin: 0.7rem 5%;
+      width: 90%;
     }
   }
   pre{

@@ -13,11 +13,19 @@
       <h1>Contact</h1>
       <div class="contactMethod">
         <div class="label">Email</div>
-        <a href ="mailto:ethanprintz@nyu.edu" class="text">ethanprintz@nyu.edu</a>
+        <a href ="mailto:ethanprintz@nyu.edu" class="text link" target="_blank">
+          <span data-content="ethanprintz@nyu.edu">
+            ethanprintz@nyu.edu
+          </span>
+        </a>
       </div>
       <div class="contactMethod">
         <div class="label">Github</div>
-        <a href="https://github.com/EthanPrintz" class="text">@ethanprintz</a>
+        <a href ="https://github.com/EthanPrintz" class="text link" target="_blank">
+          <span data-content="@ethanprintz">
+            @ethanprintz
+          </span>
+        </a>
       </div>
     </div>
   </div>
@@ -53,25 +61,106 @@ export default {
   border-radius: 1rem;
   display: flex;
   flex-direction: row;
+  /* Mobile */
+  @media only screen and (max-aspect-ratio: 4/5){  
+    flex-direction: column;
+    #portrait{
+      width: 100%;
+      height: 50%;
+      border-top-right-radius: 1rem;
+      border-top-left-radius: 1rem;
+    }
+    #textColumn{
+      width: 100%;
+      height: 50%;
+      p{
+        font-size: 1rem;
+      }
+      h1{
+        font-size: 1.6rem;
+      }
+    }
+  }
+  /* Mid */
+  @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
+    flex-direction: row;
+    #portrait{
+      width: 40%;
+      height: 100%;
+      border-bottom-left-radius: 1rem;
+      border-top-left-radius: 1rem;
+    }
+    #textColumn{
+      width: 60%;
+      height: 100%;
+      p{
+        font-size: 1.05rem;
+      }
+      h1{
+        font-size: 1.8rem;
+      }
+    }
+  }
+  /* Desktop */
+  @media only screen and (min-aspect-ratio: 3/2){
+    flex-direction: row;
+    #portrait{
+      width: 40%;
+      height: 100%;
+      border-bottom-left-radius: 1rem;
+      border-top-left-radius: 1rem;
+    }
+    #textColumn{
+      width: 60%;
+      height: 100%;
+      p{
+        font-size: 1.1rem;
+      }
+      h1{
+        font-size: 2rem;
+      }
+    }
+  }
   #portrait{
-    height: 100%;
-    width: 40%;
     background-size: cover;
     background-position: center;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
   }
   #textColumn{
-    height: 100%;
-    width: 60%;
     h1{
       color: rgb(44, 44, 44);
       padding: 1.2rem 2rem 0.4rem 2rem;
     }
     p{
-      font-size: 1.1rem;
       font-weight: 600;
       padding: 0 2rem 1.2rem 2rem;
+    }
+    /* Adapted from https://codepen.io/kathykato/pen/zYYRGRQ */
+    a {
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+      font-style: italic;
+    }
+    .link {
+      position: relative;
+      transition: clip-path 300ms ease;
+      &:hover span::before, &:focus span::before {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+      span {
+        position: relative;
+        display: inline-block;
+        color: #6161b9;
+        &::before {
+          position: absolute;
+          content: attr(data-content);
+          color: #5858a1;
+          text-decoration: underline;
+          text-decoration-color: #5858a1;
+          clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+          transition: clip-path 300ms ease;
+        }
+      }
     }
     .contactMethod{
       display: block;

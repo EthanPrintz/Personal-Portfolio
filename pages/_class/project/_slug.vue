@@ -203,7 +203,7 @@ export default {
       text-align: left;
       width: 100%;
       background-color: #eeeeee;
-      margin-bottom: -6rem;
+      margin-bottom: -5rem;
       position: relative;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
@@ -311,9 +311,9 @@ export default {
     color: #666668;
     font-weight: 600;
     text-transform: uppercase;
-    margin-top: 4rem;
+    margin-top: 3rem;
     border-top: 1px solid #dadada;
-    padding-top: 3rem;
+    padding-top: 2.6rem;
   }
   h2 {
     font-size: 1.6rem;

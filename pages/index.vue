@@ -16,7 +16,6 @@
     </header>
     <!-- Content -->
     <main id="indexMain">
-      <!-- <div class="title" id="projects-title">Projects</div> -->
       <div id="project-container" class="content-container">
         <nuxt-link
           :to="{ path: `/${post.classes[0].slug}/project/${post.slug}` }"
@@ -24,11 +23,13 @@
           :key="index"
         >
           <div class="project-card content-card" v-if="post.visible == true">
-            <img
-              :src="$config.STRAPI_URL + post.cardImage.url"
-              :alt="`Illustration of ${post.title}`"
-              class="project-image"
-            />
+            <div :id="'project' + index" class="project-image-container">
+              <img
+                :src="$config.STRAPI_URL + post.cardImage.url"
+                :alt="`Illustration of ${post.title}`"
+                class="project-image"
+              />
+            </div>
             <div class="project-title">{{ post.title }}</div>
             <div class="project-description">{{ post.classes.term }}</div>
             <div class="project-term">{{ terms.find(term => term.id === post.classes[0].term).name.toUpperCase()}}</div>
@@ -59,9 +60,7 @@
 <script>
 import { getAllPostsOfType, getAllClasses, getAllTerms } from "../api/posts";
 export default {
-  asyncComputed: {
-    
-  },
+  // Query data from headless CMS
   async asyncData() {
     const terms = await getAllTerms();
     const projects = await getAllPostsOfType("project");
@@ -73,10 +72,22 @@ export default {
     const classes = await getAllClasses();
     return { projects, experiments, classes, terms };
   },
+  // Inject head meta information
   head(){
     return {
       title: `Ethan Printz | Portfolio`
     }
+  },
+  // Code to execute on page load
+  mounted() {
+    document.querySelectorAll(".project-image-container").forEach(projectImage => {
+      pivot.init({
+        selector: `#${projectImage.id}`,
+        shine: true,
+        invert: true,
+        sensitivity: 14
+      })
+    });
   }
 };
 </script>

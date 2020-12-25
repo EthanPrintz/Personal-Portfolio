@@ -43,7 +43,8 @@ export default {
    */
   plugins: [
     { src: "~/plugins/prism", mode: "client" },
-    { src: "~/plugins/responsive.js", mode: "client" }
+    { src: "~/plugins/responsive.js", mode: "client" },
+    { src: "~/plugins/pivot.js", mode: "client" }
     // ""
   ],
   /*

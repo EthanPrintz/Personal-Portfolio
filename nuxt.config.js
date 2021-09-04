@@ -74,6 +74,13 @@ export default {
         // (Optional) Array containing image formats
         extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg"]
       }
+    ],
+    [
+      "@yabhq/nuxt-fathom",
+      {
+        siteId: "ACRTPFGN",
+        scriptSrc: "https://ladybug.ethanprintz.com/script.js"
+      }
     ]
   ],
   markdownit: {

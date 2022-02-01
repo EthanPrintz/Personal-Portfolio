@@ -20,15 +20,13 @@
         <nuxt-link
           :to="{ path: `/${post.classes[0].slug}/project/${post.slug}` }"
           v-for="(post, index) in projects"
-          :key="index"
-        >
+          :key="index">
           <div class="project-card content-card" v-if="post.visible == true">
             <div :id="'project' + index" class="project-image-container">
               <img
                 :src="$config.STRAPI_URL + post.cardImage.url"
                 :alt="`Illustration of ${post.title}`"
-                class="project-image"
-              />
+                class="project-image"/>
             </div>
             <div class="project-title">{{ post.title }}</div>
             <div class="project-description">{{ post.classes.term }}</div>
@@ -36,29 +34,38 @@
           </div>
         </nuxt-link>
       </div>
-      <div class="title" id="experiments-title">Experiments</div>
-      <div id="experiment-container" class="content-container">
-        <nuxt-link
-          :to="{ path: `/${post.classes[0].slug}/experiment/${post.slug}` }"
-          v-for="(post, index) in experiments"
-          :key="index"
-        >
+      <span class="background-container" id="experiment-background">
+        <div class="title" id="experiments-title">Experiments</div>
+        <div class="experiment-filter">
+          <div class="filter-title">Filter</div>
           <div
-            class="experiment-card content-card"
-            :style="`background-color: `"
-             v-if="post.visible == true"
-          >
-            <div class="experiment-emoji">{{ post.emoji }}</div>
-            <div class="experiment-title">{{ post.title }}</div>
+            class="filter-tag"
+            v-for="(category, index) in categories"
+            :style="{ 'background-color': category.color }"
+            v-on:click="selectedFilter = category.name"
+            :key="index">
+            {{category.name}}
           </div>
-        </nuxt-link>
-      </div>
+        </div>
+        <div id="experiment-container" class="content-container">
+          <nuxt-link
+            v-for="(experiment, index) in experiments"
+            :to="{ path: `/${experiment.classes[0].slug}/experiment/${experiment.slug}` }"
+            :key="index">
+            <div
+              class="experiment-card content-card">
+              <div class="experiment-emoji">{{ experiment.emoji }}</div>
+              <div class="experiment-title">{{ experiment.title }}</div>
+            </div>
+          </nuxt-link>
+        </div>
+      </span>
     </main>
   </div>
 </template>
 
 <script>
-import { getAllPostsOfType, getAllClasses, getAllTerms } from "../api/posts";
+import { getAllPostsOfType, getAllClasses, getAllTerms, getAllCategories } from "../api/posts";
 export default {
   // Query data from headless CMS
   async asyncData() {
@@ -70,7 +77,8 @@ export default {
     experiments.forEach(post => post.date = new Date(post.date));
     experiments.sort((a, b) => b.date - a.date);
     const classes = await getAllClasses();
-    return { projects, experiments, classes, terms };
+    const categories = await getAllCategories();
+    return { projects, experiments, classes, terms, categories };
   },
   // Inject head meta information
   head(){
@@ -78,7 +86,27 @@ export default {
       title: `Ethan Printz | Portfolio`
     }
   },
-  // Code to execute on page load
+  // Declare reactive data
+  data(){
+    return {
+      selectedFilter: 'none'
+    }
+  },
+  // Setup computed data
+  computed: {
+    selectedExperiments: function(){
+      // return this.experiments;
+      return this.experiments.filter(e => {
+        e.categories.forEach(category => {
+          if(this.selectedFilter === 'none' || category.name === this.selectedFilter){
+            return true
+          }
+        })
+      })
+    }
+  },
+  // Code to execute on page mount
+  // Add hover effect to project images
   mounted() {
     document.querySelectorAll(".project-image-container").forEach(projectImage => {
       pivot.init({
@@ -164,6 +192,36 @@ export default {
     font-family: $sans;
     color: $primary-text;
   }
+  .background-container{
+    &#experiment-background{
+      background-color: #F5F5F5;
+      .experiment-filter{
+        margin: 2.8vmin 0 0 5vmax;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        .filter-title{
+          font-weight: 600;
+          font-size: 1.3rem;
+        }
+        .filter-tag{
+          margin: 0 1vmin;
+          padding: 0.4rem 0.6rem;
+          border-radius: 0.5rem;
+          color: #F5F5F5;
+          font-weight: bold;
+          cursor: pointer;
+          transition: 0.1s;
+
+          &:hover{
+            opacity: 0.75;
+          }
+        }
+      }
+    }
+  }
   .content-container {
     width: 100vw;
     margin: 2vmin;
@@ -177,18 +235,18 @@ export default {
     }
     &#project-container {
       /* Mobile */
-      @media only screen and (max-aspect-ratio: 4/5){  
+      @media only screen and (max-aspect-ratio: 4/5){
         padding-top: 4vh;
       }
       .content-card {
         width: 30vh;
         margin: 0 3vmin 3vmin;
         padding: 1vh 0;
-        @media only screen and (max-aspect-ratio: 4/5){  
+        @media only screen and (max-aspect-ratio: 4/5){
           width: 70vw;
         }
         /* Mobile */
-        @media only screen and (max-aspect-ratio: 0.67){  
+        @media only screen and (max-aspect-ratio: 0.67){
           /* width: 30vh;
           margin: 0 3vmin 3vmin;
           padding: 1vh 0; */

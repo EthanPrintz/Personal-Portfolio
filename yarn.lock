@@ -1545,6 +1545,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@yabhq/nuxt-fathom@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@yabhq/nuxt-fathom/-/nuxt-fathom-2.0.0.tgz#a853c2d300f3f7bcb549ce5192641e13e3a219a9"
+  integrity sha512-sTDF96ec9YZxsofDyDSKfrSpdorY/IAdDuPZ1zrmZXY9iV+smM/pi4JjcTq9JW3ON7+4QqMZbqE5InY7nsdJIQ==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

@@ -36,3 +36,10 @@ export async function getAllTerms() {
     response.json()
   );
 }
+
+// Get all categories
+export async function getAllCategories() {
+  return await fetch(`https://ethanprintz.dev/categories`).then(response =>
+    response.json()
+  );
+}

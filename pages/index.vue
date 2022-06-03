@@ -4,8 +4,8 @@
     <header id="main-header">
       <div id="bio-container">
         <h1 id="header-name">Ethan Printz</h1>
-        <h3 id="header-major">Junior at NYU IMA/ITP</h3>
-        <h3 id="header-role">UI/UX and Computer Science</h3>
+        <h3 id="header-major">New Grad from NYU IMA/ITP</h3>
+        <h3 id="header-role">UX Design // Mobile Dev // Web Dev</h3>
       </div>
       <img :src="require(`@/assets/img/nyc-skyline.png`)" alt id="skyline" />
       <nuxt-link to="/contact">

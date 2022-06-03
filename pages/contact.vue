@@ -69,6 +69,7 @@ export default {
   border-radius: 1rem;
   display: flex;
   flex-direction: row;
+  overflow-y: scroll;
   /* Mobile */
   @media only screen and (max-aspect-ratio: 4/5){
     flex-direction: column;

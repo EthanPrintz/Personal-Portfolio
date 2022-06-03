@@ -7,15 +7,23 @@
     <div id="portrait"  :style="image"></div>
     <div id="textColumn">
       <h1>About</h1>
-      <p>I am a Junior at New York University pursuing a double major in Interactive Media Arts and Computer Science. 
-        For the past four years I've sought to integrate my passions in design, programming, human-computer interaction, 
-        and emerging tech into my schoolwork and artwork. </p>
+      <p>
+        I work at the intersection of design, development,
+        and experimental technologies, on everything from an
+        AR walking tour platform, to a gestural interface for
+        theatrical lights, to a web-based teaching tool for
+        air quality data, to a Broadway AR performance.<br><br>
+        I have a depth of experience, both academic and professional, in UX design,
+        mobile app development (Swift and React Native), and web development (React and Vue).<br><br>
+        I am currently undertaking my post-grad job search (graduated mid-May 2022), and would love to find
+        a place where I can apply the variety of skills I've learned on new and exciting projects.
+      </p>
       <h1>Contact</h1>
       <div class="contactMethod">
         <div class="label">Email</div>
-        <a href ="mailto:ethanprintz@nyu.edu" class="text link" target="_blank">
-          <span data-content="ethanprintz@nyu.edu">
-            ethanprintz@nyu.edu
+        <a href ="mailto:contact@ethanprintz.com" class="text link" target="_blank">
+          <span data-content="contact@ethanprintz.com">
+            contact@ethanprintz.com
           </span>
         </a>
       </div>
@@ -62,7 +70,7 @@ export default {
   display: flex;
   flex-direction: row;
   /* Mobile */
-  @media only screen and (max-aspect-ratio: 4/5){  
+  @media only screen and (max-aspect-ratio: 4/5){
     flex-direction: column;
     #portrait{
       width: 100%;

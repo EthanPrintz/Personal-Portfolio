@@ -35,8 +35,8 @@
         </nuxt-link>
       </div>
       <span class="background-container" id="experiment-background">
-        <div class="title" id="experiments-title">Experiments</div>
-        <div class="experiment-filter">
+        <div class="title" id="experiments-title">Experiments </div>
+        <!-- <div class="experiment-filter">
           <div class="filter-title">Filter</div>
           <div
             class="filter-tag"
@@ -46,7 +46,7 @@
             :key="index">
             {{category.name}}
           </div>
-        </div>
+        </div> -->
         <div id="experiment-container" class="content-container">
           <nuxt-link
             v-for="(experiment, index) in experiments"
@@ -56,6 +56,15 @@
               class="experiment-card content-card">
               <div class="experiment-emoji">{{ experiment.emoji }}</div>
               <div class="experiment-title">{{ experiment.title }}</div>
+              <!-- <div class="experiment-dot-container">
+                <div
+                  class="experiment-dot"
+                  v-for="(category, index) in categories"
+                  :style="{'background-color': category.color}"
+                  :key="index">
+
+                </div>
+              </div> -->
             </div>
           </nuxt-link>
         </div>
@@ -68,7 +77,7 @@
 import { getAllPostsOfType, getAllClasses, getAllTerms, getAllCategories } from "../api/posts";
 export default {
   // Query data from headless CMS
-  async asyncData() {
+  asyncData: async () => {
     const terms = await getAllTerms();
     const projects = await getAllPostsOfType("project");
     projects.forEach(post => post.date = new Date(post.date));
@@ -87,24 +96,20 @@ export default {
     }
   },
   // Declare reactive data
-  data(){
-    return {
-      selectedFilter: 'none'
-    }
-  },
-  // Setup computed data
-  computed: {
-    selectedExperiments: function(){
-      // return this.experiments;
-      return this.experiments.filter(e => {
-        e.categories.forEach(category => {
-          if(this.selectedFilter === 'none' || category.name === this.selectedFilter){
-            return true
-          }
-        })
-      })
-    }
-  },
+  // data(){
+  //   return {
+  //     selectedFilter: 'none'
+  //   }
+  // },
+  // // Setup computed data
+  // computed: {
+  //   selectedExperiments: function(){
+  //     // return this.experiments;
+  //     return this.experiments.filter(experiment => {
+  //       experiment.categories.some(cat => cat.name === selectedFilter)
+  //     })
+  //   }
+  // },
   // Code to execute on page mount
   // Add hover effect to project images
   mounted() {
@@ -302,6 +307,12 @@ export default {
           background-color: white;
           border-top-right-radius: 0.6rem;
           border-bottom-right-radius: 0.6rem;
+        }
+        .experiment-dot-container{
+          .experiment-dot{
+            width: 0.4rem;
+            height: 0.4rem;
+          }
         }
       }
     }

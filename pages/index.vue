@@ -5,7 +5,7 @@
       <div id="bio-container">
         <h1 id="header-name">Ethan Printz</h1>
         <h3 id="header-major">New Grad from NYU IMA/ITP</h3>
-        <h3 id="header-role">UX Design // Mobile Dev // Web Dev</h3>
+        <h3 id="header-role">UX // XR // Mobile Dev // Web Dev</h3>
       </div>
       <img :src="require(`@/assets/img/nyc-skyline.png`)" alt id="skyline" />
       <nuxt-link to="/contact">

@@ -107,7 +107,7 @@ export default {
     padding: 10vmin;
     position: relative;
     /* Mobile */
-    @media only screen and (max-aspect-ratio: 4/5){  
+    @media only screen and (max-aspect-ratio: 4/5){
       height: 74vmin;
     }
     /* Mid */
@@ -148,7 +148,7 @@ export default {
     flex-direction: column;
     align-items: center;
     /* Mobile */
-    @media only screen and (max-aspect-ratio: 4/5){  
+    @media only screen and (max-aspect-ratio: 4/5){
       width: 96vw;
       margin: -10vmin 2vw 0 2vw;
     }
@@ -172,7 +172,7 @@ export default {
         padding-left: 5vmin;
       }
       /* Mobile */
-      @media only screen and (max-aspect-ratio: 4/5){  
+      @media only screen and (max-aspect-ratio: 4/5){
         top: -14rem;
         padding-left: 2vmin;
         text-align: center;
@@ -193,7 +193,7 @@ export default {
           max-width: 84%;
         }
         /* Mobile */
-        @media only screen and (max-aspect-ratio: 4/5){  
+        @media only screen and (max-aspect-ratio: 4/5){
           max-width: 95%;
           font-size: 1.18rem;
         }
@@ -208,7 +208,7 @@ export default {
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
       /* Mobile */
-      @media only screen and (max-aspect-ratio: 4/5){  
+      @media only screen and (max-aspect-ratio: 4/5){
         padding: 2rem 5vmin;
       }
       /* Mid */
@@ -220,13 +220,13 @@ export default {
         padding: 2rem 20vmin;
       }
       #post-overview-title{
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         font-weight: bold;
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
       }
       .overviewShort{
         margin-top: 0.2rem;
-        font-size: 1.15rem;
+        font-size: 1.25rem;
         display: block;
         .overviewShortLabel{
           display: inline-block;
@@ -279,9 +279,9 @@ export default {
   font-family: $sans;
   font-weight: 400;
   /* Mobile */
-  @media only screen and (max-aspect-ratio: 4/5){  
+  @media only screen and (max-aspect-ratio: 4/5){
     padding: 3vh 5vmin;
-    font-size: 1.22rem;
+    font-size: 1.4rem;
     h1,h2{
       text-align: center;
     }
@@ -289,12 +289,12 @@ export default {
   /* Mid */
   @media only screen and (min-aspect-ratio: 4/5) and (max-aspect-ratio: 3/2){
     padding: 2vh 10vmin;
-    font-size: 1.17rem;
+    font-size: 1.35rem;
   }
   /* Desktop */
   @media only screen and (min-aspect-ratio: 3/2){
     padding: 2vh 20vmin;
-    font-size: 1.12rem;
+    font-size: 1.26rem;
   }
   a{
     color: #6161b9;
@@ -307,7 +307,7 @@ export default {
     color: #5858a1;
   }
   h1{
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     color: #666668;
     font-weight: 600;
     text-transform: uppercase;
@@ -316,9 +316,9 @@ export default {
     padding-top: 2.6rem;
   }
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.92rem;
     font-weight: 700;
-    padding: 0.6rem 0 0 0;
+    padding: 1rem 0 0.3rem 0;
     font-family: $sans;
   }
   p{
@@ -326,14 +326,14 @@ export default {
   }
   img {
     border-radius: 0.5rem;
-    @media only screen and (max-aspect-ratio: 4/5){  
-      margin: 1rem 0;
-      width: 100%;
+    @media only screen and (max-aspect-ratio: 4/5){
+      margin: 1rem 11.5%;
+      width: 77%;
     }
     /* Tablet + Desktop */
     @media only screen and (min-aspect-ratio: 4/5){
-      margin: 0.7rem 5%;
-      width: 90%;
+      margin: 0.7rem 15%;
+      width: 70%;
     }
   }
   pre{
@@ -345,7 +345,7 @@ export default {
     margin: 2rem 0;
     text-overflow: scroll;
     overflow-x: scroll;
-    @media only screen and (max-aspect-ratio: 4/5){  
+    @media only screen and (max-aspect-ratio: 4/5){
       font-size: 0.84rem;
     }
     /* Tablet + Desktop */
@@ -380,6 +380,6 @@ export default {
     flex-direction: row;
     justify-content: center;
   }
-  
+
 }
 </style>
